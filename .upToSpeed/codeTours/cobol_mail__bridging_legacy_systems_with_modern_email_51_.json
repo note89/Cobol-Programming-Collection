@@ -1,0 +1,125 @@
+{
+  "title": "COBOL Mail: Bridging Legacy Systems with Modern Email",
+  "id": "Vw0D0ZlFYM2JAXadtDedNIKnapPsCdUJ2qyCmk+qN4w=",
+  "steps": [
+    {
+      "type": "textOnly",
+      "description": "Welcome to the COBOL Mail tour! As a TypeScript engineer, you're familiar with modern, object-oriented programming. COBOL, in contrast, is a procedural language with a unique structure that emphasizes readability and business logic. While TypeScript uses curly braces and semicolons, COBOL uses a column-sensitive format and periods to end statements. \n\nIn this journey, we'll explore COBOL Mail, a fascinating project that bridges the gap between COBOL—a language with deep roots in business computing—and modern email communication. This project is significant because:\n\n1. It demonstrates COBOL's adaptability in the internet age.\n2. It allows organizations with existing COBOL infrastructure to implement email functionality without switching languages.\n3. It showcases how legacy systems can be modernized without a complete rewrite.\n\nCOBOL Mail interacts with SMTP and POP3 protocols, much like you might use libraries like 'nodemailer' in a TypeScript project. However, COBOL Mail achieves this using COBOL's unique syntax and structure, which we'll explore in detail throughout this tour.\n\nAs we proceed, we'll draw parallels between COBOL and TypeScript concepts where applicable, helping you understand COBOL's approach to solving modern communication challenges.",
+      "title": "",
+      "id": "1164"
+    },
+    {
+      "type": "textOnly",
+      "description": "COBOL Mail is a project that demonstrates how COBOL, a language traditionally used for business computing, can be adapted to handle modern email operations. This is particularly significant in the context of legacy systems that need to integrate with contemporary communication methods. Let's break down the key components of COBOL Mail and how they relate to modern email systems:\n\n1. DRIVER.CBL: This program demonstrates email sending with attachments. In modern terms, it's similar to a mail client's 'Compose' and 'Send' functionality, handling MIME attachments.\n\n2. MAILER.CBL: A simpler email sending program, analogous to a basic 'Send Email' function in modern applications.\n\n3. READER.CBL: This component retrieves emails from a POP3 server, functioning like the 'Inbox' feature in modern email clients.\n\n4. STATUS.CBL: Displays email headers from a POP3 server, similar to how modern email systems show message previews or lists.\n\n5. SEE32.CBI: Contains declarations for the SEE (Secure Email Engine) library. This is crucial as it bridges COBOL with modern email protocols (SMTP, POP3), much like how TypeScript might use libraries to interact with email servers.\n\nThe SEE library is particularly important as it abstracts the complexities of email protocols, allowing COBOL programs to send and receive emails without implementing low-level network communications. This is similar to how you might use a package like 'nodemailer' in a TypeScript project.\n\nBy using COBOL for email operations, organizations can:\n- Integrate email functionality into existing COBOL-based systems without a complete rewrite.\n- Leverage the reliability and processing power of COBOL for handling large volumes of emails in business environments.\n- Demonstrate the adaptability of legacy systems to modern requirements.\n\nFor a TypeScript engineer, it's interesting to note how COBOL Mail achieves similar functionality to modern email libraries, showcasing that core email concepts transcend specific programming languages. This project serves as a bridge between traditional business computing and contemporary communication needs, highlighting COBOL's continued relevance in evolving technological landscapes.",
+      "title": "",
+      "id": "1165"
+    },
+    {
+      "type": "highlight",
+      "description": "Let's examine DRIVER.CBL, which demonstrates how to send an email with an attachment. We'll start by looking at the program's structure and declarations, which are quite different from TypeScript but serve similar purposes.\n\nIn COBOL, programs are divided into four main divisions:\n1. IDENTIFICATION DIVISION: Similar to metadata in TypeScript, it provides information about the program.\n2. ENVIRONMENT DIVISION: Describes the program's environment and external dependencies.\n3. DATA DIVISION: Declares variables and data structures, similar to variable declarations in TypeScript.\n4. PROCEDURE DIVISION: Contains the actual code logic (we'll explore this in the next step).\n\nNotice how COBOL uses a column-sensitive format, with line numbers on the left. This is a remnant of its punch card origins.\n\nIn the DATA DIVISION, we see variable declarations. For example:\n- '01 NBR_CHANS PIC S9(9) COMP-5 VALUE 1' declares an integer variable.\n- '01 BUFFER PIC X(80)' declares a string variable of 80 characters.\n\nThese are analogous to TypeScript declarations like:\nlet NBR_CHANS: number = 1;\nlet BUFFER: string = '';  // 80 characters\n\nThe 'COPY' statements are similar to import statements in TypeScript, bringing in external definitions.",
+      "file": "COBOL Mail/DRIVER.CBL",
+      "highlight": [{ "start": 19, "end": 43 }],
+      "title": "",
+      "id": "1174"
+    },
+    {
+      "type": "highlight",
+      "description": "Now, let's examine the main procedure of DRIVER.CBL, which contains the core logic for sending an email with an attachment.\n\nThe PROCEDURE DIVISION in COBOL is where the actual program logic resides, similar to the body of a function in TypeScript.\n\nHere's a breakdown of the main steps:\n\n1. The program starts by calling SEE-INITIALIZE to set up the email environment.\n2. It then sets various email parameters using SEE-SET-PARAM, such as the SMTP server, sender, recipient, subject, and message body.\n3. The program attaches a file using SEE-ATTACH-FILE.\n4. Finally, it sends the email using SEE-SEND-EMAIL and checks for any errors.\n\nNotice how COBOL uses verb-like statements (CALL, MOVE, IF) to perform actions. This is quite different from TypeScript's more expression-based syntax, but the overall flow of setting up an email, attaching a file, and sending it is similar to what you might do in TypeScript using a library like nodemailer.\n\nThe error handling at the end (IF SEE-CODE < 0 THEN ...) is analogous to try-catch blocks in TypeScript, ensuring that any issues during the email sending process are caught and reported.",
+      "file": "COBOL Mail/DRIVER.CBL",
+      "highlight": [{ "start": 45, "end": 105 }],
+      "title": "",
+      "id": "1175"
+    },
+    {
+      "type": "highlight",
+      "description": "Now, let's focus on the main procedure division where the email sending process occurs. Pay attention to the key functions like seeAttach, seeSmtpConnect, and seeSendEmail.",
+      "file": "COBOL Mail/DRIVER.CBL",
+      "highlight": [{ "start": 67, "end": 117 }],
+      "title": "",
+      "id": "1167"
+    },
+    {
+      "type": "highlight",
+      "description": "Let's examine READER.CBL, which demonstrates how to retrieve emails from a POP3 server. This file is crucial for understanding the email receiving process in COBOL Mail.\n\nPOP3 (Post Office Protocol version 3) is an email retrieval protocol that allows clients to download emails from a server. In modern web development, you might be more familiar with IMAP or API-based approaches for email retrieval. However, POP3 remains widely used, especially in legacy systems.\n\nAs a TypeScript engineer, you might typically interact with email services through RESTful APIs or WebSocket connections. In COBOL Mail, we're working at a lower level, directly implementing the POP3 protocol.\n\nKey points to note in this file:\n\n1. POP3 server connection details (lines 43-51): Similar to how you'd configure connection strings in a TypeScript application.\n2. Email file naming convention (lines 56-60): Demonstrates how COBOL handles file naming, which is crucial for saving retrieved emails.\n3. Working storage section (lines 34-73): Analogous to declaring variables and interfaces in TypeScript, but with COBOL's unique syntax.\n\nThis structure sets up the foundation for POP3 operations, which we'll see implemented in the procedure division. The approach here, while using COBOL syntax, conceptually aligns with how you'd structure a TypeScript class or module for email operations, emphasizing the universality of certain programming concepts across languages and eras.",
+      "file": "COBOL Mail/READER.CBL",
+      "highlight": [{ "start": 19, "end": 73 }],
+      "title": "",
+      "id": "1168"
+    },
+    {
+      "type": "revealFiles",
+      "files": ["COBOL Mail/READER.CBL"],
+      "description": "Let's begin by examining READER.CBL, which is responsible for reading emails from a POP3 server. This file demonstrates how to connect to a server, retrieve email counts, and process multiple emails.",
+      "title": "",
+      "id": "1176"
+    },
+    {
+      "type": "highlight",
+      "description": "The main procedure starts by displaying some information and then connects to the POP3 server. Notice how COBOL uses the CALL statement to invoke external functions, similar to how you might import and use functions in TypeScript.",
+      "file": "COBOL Mail/READER.CBL",
+      "highlight": [{ "start": 74, "end": 103 }],
+      "title": "",
+      "id": "1177"
+    },
+    {
+      "type": "highlight",
+      "description": "After connecting to the server, the program retrieves the number of emails waiting on the server. This is done using the seeGetEmailCount function. In TypeScript, you might use async/await with a similar function that returns a Promise.",
+      "file": "COBOL Mail/READER.CBL",
+      "highlight": [{ "start": 105, "end": 120 }],
+      "title": "",
+      "id": "1178"
+    },
+    {
+      "type": "highlight",
+      "description": "The program then enters a loop to process each email. This is similar to a for loop in TypeScript, but COBOL uses labels and GO TO statements for flow control. The COUNTER variable is used to keep track of the current email being processed.",
+      "file": "COBOL Mail/READER.CBL",
+      "highlight": [{ "start": 121, "end": 128 }],
+      "title": "",
+      "id": "1179"
+    },
+    {
+      "type": "highlight",
+      "description": "The SEE32.CBI file contains important declarations for the Secure Email Engine (SEE) library. Let's examine some of these declarations to understand the capabilities of the library.",
+      "file": "COBOL Mail/SEE32.CBI",
+      "highlight": [{ "start": 1, "end": 53 }],
+      "title": "",
+      "id": "1170"
+    },
+    {
+      "type": "textOnly",
+      "description": "The SEE (Secure Email Engine) library is a crucial component of the COBOL Mail project. It provides the necessary functions to interact with SMTP and POP3 servers, handling the complexities of email protocols. By using this library, COBOL programs can send and receive emails, including attachments, without needing to implement low-level network communication details.",
+      "title": "",
+      "id": "1171"
+    },
+    {
+      "type": "textOnly",
+      "description": "COBOL Mail is a project that demonstrates the adaptability of COBOL to modern communication needs. As a TypeScript engineer, you might be surprised to learn that COBOL, a language from the 1950s, can be used for email functionality. This project showcases how legacy languages can evolve to meet contemporary requirements.",
+      "title": "",
+      "id": "1180"
+    },
+    {
+      "type": "textOnly",
+      "description": "One of the key features of COBOL Mail is its ability to integrate legacy COBOL systems with modern email capabilities. This integration is achieved through careful design and the use of interfaces that allow COBOL code to interact with email protocols.",
+      "title": "",
+      "id": "1181"
+    },
+    {
+      "type": "textOnly",
+      "description": "For organizations with existing COBOL infrastructure, COBOL Mail offers a significant advantage. It allows them to implement email functionality without switching languages or rewriting their entire codebase. This is particularly valuable in industries like finance and government, where COBOL is still widely used. Consider how this compares to your experience with TypeScript and how you might approach adding new functionality to legacy TypeScript code.",
+      "title": "",
+      "id": "1182"
+    },
+    {
+      "type": "textOnly",
+      "description": "COBOL Mail serves as a bridge between traditional business computing and internet-based communication. It allows COBOL applications, which typically handle batch processing and data management, to interact with email systems that operate in real-time over the internet. This bridging is similar to how you might use TypeScript to create interfaces between legacy JavaScript applications and modern web APIs.",
+      "title": "",
+      "id": "1183"
+    },
+    {
+      "type": "textOnly",
+      "description": "COBOL Mail provides a pathway for modernizing COBOL applications without a complete rewrite. This incremental approach to modernization allows organizations to gradually update their systems while maintaining their existing COBOL codebase. As a TypeScript developer, you can relate this to how TypeScript itself provides a path for modernizing JavaScript codebases.",
+      "title": "",
+      "id": "1184"
+    }
+  ]
+}

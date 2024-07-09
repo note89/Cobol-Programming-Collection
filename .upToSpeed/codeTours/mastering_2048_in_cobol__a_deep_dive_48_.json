@@ -1,0 +1,154 @@
+{
+  "title": "Mastering 2048 in COBOL: A Deep Dive",
+  "id": "uqUZDZ+AT+tqolQ9uZOpD6pckMf0TXZTGfnFuC0ypiA=",
+  "steps": [
+    {
+      "type": "textOnly",
+      "description": "Welcome to this code tour of the 2048 game implemented in COBOL! Before we dive into the specifics of the game, let's start with a brief introduction to COBOL's structure, which is quite different from TypeScript.\n\nCOBOL programs are organized into four main divisions:\n\n1. IDENTIFICATION DIVISION: This is where the program is identified and described.\n2. ENVIRONMENT DIVISION: This section describes the program's environment and external dependencies.\n3. DATA DIVISION: Here, all the data structures and variables used in the program are defined.\n4. PROCEDURE DIVISION: This is where the actual program logic and procedures are written.\n\nAs a TypeScript engineer, you might find this structure quite different from what you're used to. In COBOL, the separation of concerns is built into the language structure itself, whereas in TypeScript, you have more flexibility in how you organize your code.",
+      "title": "",
+      "id": "1155"
+    },
+    {
+      "type": "textOnly",
+      "description": "Now, let's talk about the 2048 game implementation in COBOL. This program is a text-based version of the popular 2048 puzzle game. Here's a brief overview of what the program does:\n\n1. It initializes a 4x4 game board.\n2. It handles user input for moves (up, down, left, right).\n3. It implements the game logic, including merging tiles and generating new tiles.\n4. It keeps track of the current score and high score.\n5. It provides a simple text-based user interface to display the game state.\n\nAs we go through the code, you'll see how these features are implemented using COBOL's unique structure and syntax. While the logic might be familiar to you from other 2048 implementations you've seen, the way it's expressed in COBOL will be quite different from TypeScript.",
+      "title": "",
+      "id": "1156"
+    },
+    {
+      "type": "textOnly",
+      "description": "Let's start by looking at the overall structure of the 2048.cob file. This file contains the entire COBOL program for the 2048 game. It's divided into the four main COBOL divisions we discussed earlier:\n\n1. The IDENTIFICATION DIVISION at the top identifies the program.\n2. The ENVIRONMENT DIVISION specifies some environment-related settings.\n3. The DATA DIVISION defines all the variables and data structures used in the game.\n4. The PROCEDURE DIVISION contains all the game logic and procedures.\n\nAs we go through this tour, we'll explore each of these divisions in detail, explaining how they contribute to the implementation of the 2048 game. You'll see how COBOL's structured approach differs from the more flexible, object-oriented style you're used to in TypeScript.",
+      "title": "",
+      "id": "1157"
+    },
+    {
+      "type": "highlight",
+      "description": "Here we see the IDENTIFICATION DIVISION of the program. It specifies the program name and includes important comments about the game's origin, gameplay, and licensing information.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 1, "end": 39 }],
+      "title": "",
+      "id": "1115"
+    },
+    {
+      "type": "highlight",
+      "description": "The ENVIRONMENT DIVISION defines two important files used by the program: CONTROL-FILE for storing game controls, and HIGH-SCORE-FILE for managing high scores. Note how these are set up as optional files with sequential organization.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 40, "end": 54 }],
+      "title": "",
+      "id": "1116"
+    },
+    {
+      "type": "highlight",
+      "description": "Let's examine the DATA DIVISION, which is crucial in COBOL for defining the program's data structures. This section is analogous to declaring variables and types in TypeScript, but with some key differences:\n\n1. FILE SECTION: This defines the structure of files used by the program. Here, we see definitions for CONTROL-FILE and HIGH-SCORE-FILE, which are used for storing game controls and high scores respectively.\n\n2. WORKING-STORAGE SECTION: This is where we define variables used throughout the program, similar to global variables in TypeScript.\n\nKey points to note:\n\n- COBOL uses level numbers (01, 05, etc.) to define hierarchical data structures. 01 is the highest level, with lower numbers indicating nested items.\n- PIC clause defines the data type and size. For example, PIC 9(4) means a 4-digit numeric field.\n- OCCURS clause is used to create arrays. For instance, GRID-ROW OCCURS 4 TIMES creates a 4-element array.\n- 88 level items define condition names, similar to enum values in TypeScript.\n\nGAME-GRID (lines 93-96) is the core data structure representing the 4x4 game board:\n- It's a two-dimensional array (4x4) of GRID-CELL items.\n- Each GRID-CELL is defined as PIC 9999, allowing values up to 9999 (sufficient for 2048 and beyond).\n\nOther important variables include:\n- GAME-STATUS (line 70): Tracks the game state (playing, quit, etc.).\n- USER-ENTRY and USER-COMMAND (lines 78-79): Handle user input.\n- HIGH-SCORES (lines 138-144): An array to store high scores.\n- CURRENT-SCORE (line 146): Keeps track of the player's current score.\n\nUnderstanding this DATA DIVISION is crucial as it defines the structure of all data used in the game logic we'll explore in subsequent steps.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 56, "end": 171 }],
+      "title": "",
+      "id": "1117"
+    },
+    {
+      "type": "highlight",
+      "description": "The SCREEN SECTION in COBOL is analogous to declarative UI frameworks in modern web development. It defines the layout and structure of the user interface, similar to how you might use HTML and CSS in web applications.\n\nIn COBOL, the SCREEN SECTION allows developers to describe screen layouts in a declarative manner, specifying the position and attributes of each UI element. This is conceptually similar to how you might use JSX in React or templates in Angular, but with a syntax specific to COBOL.\n\nKey components in this SCREEN SECTION:\n\n1. GAME-GRID-SCREEN (lines 174-238): This defines the main game screen, including the grid display and user input area. Think of this as the main component in a React application.\n\n2. CONTROLS-SCREEN (lines 240-255): This screen is used for customizing game controls, similar to a settings or options component in a web app.\n\n3. HIGH-SCORE-SCREEN (lines 257-269): This displays the high scores, comparable to a leaderboard component in a web-based game.\n\nEach of these screens uses COBOL's positioning system (LINE and COLUMN) to place elements, which is analogous to using CSS for layout in web development. The PIC clauses define the format of displayed data, similar to how you might use TypeScript types to define data structures.\n\nThe USING clauses (e.g., line 238) bind screen elements to program variables.\n\nWhile the syntax and approach differ significantly from TypeScript and web development, the underlying principles of structuring user interfaces and handling user input are similar. This SCREEN SECTION effectively creates a text-based UI for the 2048 game, handling all the display and input needs of the application in a way that's native to COBOL's strengths in data processing and terminal-based interfaces.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 172, "end": 270 }],
+      "title": "",
+      "id": "1118"
+    },
+    {
+      "type": "highlight",
+      "description": "Here we see the MAIN procedure, which outlines the high-level flow of the game. It initializes the game, runs the main game loop, and handles end-game operations like saving high scores.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 271, "end": 284 }],
+      "title": "",
+      "id": "1119"
+    },
+    {
+      "type": "textOnly",
+      "description": "The GAME-TURN procedure is the core of the 2048 game logic in this COBOL implementation. It's similar to a main game loop in TypeScript, where you would typically update the game state, render the view, and handle user input in each iteration. Let's break down the components of this procedure to understand how it manages each turn of the game.",
+      "title": "",
+      "id": "1158"
+    },
+    {
+      "type": "highlight",
+      "description": "The first part of the GAME-TURN procedure handles the placement of new tiles. In 2048, a new tile appears after each move, unless the move was invalid. This is managed by a flag called TILE-NEEDED.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 334, "end": 338 }],
+      "title": "",
+      "id": "1159"
+    },
+    {
+      "type": "highlight",
+      "description": "After handling the new tile placement, the procedure displays the current game state. This is equivalent to rendering the game board in a TypeScript implementation.\n\nIn COBOL, this is done with a simple DISPLAY statement:",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 339, "end": 339 }],
+      "title": "",
+      "id": "1160"
+    },
+    {
+      "type": "highlight",
+      "description": "The next step in the GAME-TURN procedure is handling user input. In a TypeScript game, you might use event listeners for this. In COBOL, it's handled by a separate procedure:\n\nThe HANDLE-USER-ENTRY procedure (not shown here) likely contains logic to accept and process user input, such as arrow key presses for moving tiles.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 340, "end": 340 }],
+      "title": "",
+      "id": "1161"
+    },
+    {
+      "type": "highlight",
+      "description": "Finally, the GAME-TURN procedure checks if the player has won the game. In 2048, this typically means checking if a tile with the value 2048 has been created.\n\nIn COBOL, this is done by calling another procedure:",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 341, "end": 341 }],
+      "title": "",
+      "id": "1162"
+    },
+    {
+      "type": "textOnly",
+      "description": "The GAME-TURN procedure efficiently encapsulates the main game loop for 2048. It manages new tile placement, updates the display, handles user input, and checks for win conditions. While the syntax is different from TypeScript, the overall structure and flow should feel familiar. Each PERFORM statement is similar to calling a function in TypeScript, allowing for a modular and organized code structure.",
+      "title": "",
+      "id": "1163"
+    },
+    {
+      "type": "highlight",
+      "description": "This procedure adds a new tile to the game board after each move. It randomly selects an empty cell and places either a 2 or 4 tile. Let's examine how COBOL handles this and compare it to TypeScript:\n\n1. Random number generation:\n   COBOL: `COMPUTE RANDOM-NUMBER = FUNCTION RANDOM * EMPTY-COUNT + 1`\n   TypeScript: `const randomNumber = Math.floor(Math.random() * emptyCount) + 1;`\n\nCOBOL uses the FUNCTION RANDOM, while TypeScript uses Math.random(). Both generate a number between 0 and 1, which is then scaled to the desired range.\n\n2. Nested loops for cell selection:\nCOBOL uses nested PERFORM statements with VARYING, while TypeScript would typically use nested for loops. The COBOL approach might seem less intuitive at first, but it's performing the same operation as a nested loop in TypeScript.\n\n3. Probability calculation:\n   COBOL: \n   ```cobol\n   COMPUTE RANDOM-NUMBER = FUNCTION RANDOM * 10 + 1\n   IF RANDOM-NUMBER > 8\n       MOVE 4 TO GRID-CELL (ROW-INDEX, COL-INDEX)\n   ELSE\n       MOVE 2 TO GRID-CELL (ROW-INDEX, COL-INDEX)\n   END-IF\n   ```\n   TypeScript equivalent:\n   ```typescript\n   const newValue = Math.random() < 0.9 ? 2 : 4;\n   grid[rowIndex][colIndex] = newValue;\n   ```\n\nCOBOL's approach here is more verbose but follows the same logic of having a 90% chance for a 2 and a 10% chance for a 4.\n\nUnderstanding this COBOL implementation is valuable for a TypeScript engineer because it demonstrates how core gaming logic (random tile placement) can be implemented in a different paradigm. It showcases how COBOL handles randomization, loop structures, and conditional logic, which are fundamental concepts in any programming language. This comparison helps in appreciating the evolution of programming languages and how modern languages like TypeScript have simplified certain operations while maintaining the same logical structures.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 344, "end": 371 }],
+      "title": "",
+      "id": "1121"
+    },
+    {
+      "type": "highlight",
+      "description": "This procedure handles user input, interpreting commands for moving tiles, changing controls, viewing high scores, or quitting the game. It's a switch-like structure using the EVALUATE statement.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 396, "end": 419 }],
+      "title": "",
+      "id": "1122"
+    },
+    {
+      "type": "highlight",
+      "description": "The SLIDE-UP procedure handles the logic for moving tiles upward. It processes each column, combining like tiles and shifting them up. The other directional procedures (SLIDE-DOWN, SLIDE-LEFT, SLIDE-RIGHT) follow a similar pattern.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 591, "end": 629 }],
+      "title": "",
+      "id": "1123"
+    },
+    {
+      "type": "highlight",
+      "description": "This procedure checks if any tile has reached the value of 2048, which is the win condition for the game. If found, it sets the game state to 'WIN' and displays a victory message.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 751, "end": 765 }],
+      "title": "",
+      "id": "1124"
+    },
+    {
+      "type": "highlight",
+      "description": "The SAVE-HIGH-SCORES procedure manages the recording and updating of high scores. It reads existing scores, compares the current score, and updates the file if necessary.",
+      "file": "Cobol Games/2048.cob",
+      "highlight": [{ "start": 557, "end": 589 }],
+      "title": "",
+      "id": "1125"
+    },
+    {
+      "type": "textOnly",
+      "description": "We've now explored the key components of this COBOL implementation of 2048. The program effectively uses COBOL's strengths in data processing and file handling to create a functional game. It demonstrates structured programming techniques, effective use of COBOL's divisions (IDENTIFICATION, ENVIRONMENT, DATA, PROCEDURE), and showcases how complex game logic can be implemented in COBOL. The use of the SCREEN SECTION for display and the implementation of high score tracking add depth to the game. This implementation serves as an excellent example of how traditional business-oriented languages like COBOL can be used for creating interactive applications.",
+      "title": "",
+      "id": "1126"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "title": "A Journey Through Programming History: The COBOL Program Collection",
+  "id": "K44lG6FUEDESOF9MRY0yImqBrb/sP14jcueux/kYxSg=",
+  "steps": [
+    {
+      "type": "textOnly",
+      "description": "Welcome to the tour of The COBOL Program Collection repository. This repository is a fascinating archive aimed at preserving programs and scripts from COBOL, an early programming language that still powers many business applications worldwide. Let's explore the structure and contents of this repository to understand its significance in preserving computing history.",
+      "title": "",
+      "id": "663"
+    },
+    {
+      "type": "revealFiles",
+      "files": ["README.md"],
+      "description": "Let's start by examining the README.md file. This file provides an excellent overview of the repository's contents and structure. It lists the various categories of COBOL programs preserved in this archive, including examples, games, simulations, and utilities. It also mentions some specific COBOL software that has been preserved, such as an email engine and a report writer.",
+      "title": "",
+      "id": "664"
+    },
+    {
+      "type": "textOnly",
+      "description": "This repository is a treasure trove of COBOL programs, spanning from simple examples to complex applications. Let's delve deeper into the historical significance of some preserved programs:\n\n1. The SMTP/POP3 Email Engine (1999): This program showcases COBOL's adaptability to internet technologies, demonstrating how COBOL evolved beyond its initial batch processing roots.\n\n2. The COBOL Report Writer (2002): This utility highlights COBOL's strength in generating business reports, a crucial function in many industries.\n\n3. Cisp (COBOL Lisp Interpreter) (2017): This modern implementation shows COBOL's ongoing relevance and its ability to interface with other programming paradigms.\n\nThese programs illustrate COBOL's journey from mainframe-centric applications to more diverse use cases.\n\nNow, let's connect some COBOL concepts to your TypeScript experience:\n\n- COBOL's 'PICTURE' clause (e.g., 'PIC 9(4)') is analogous to TypeScript's type system, but with a focus on defining data storage rather than just types.\n- COBOL's 'PERFORM' statement serves a similar purpose to function calls in TypeScript, but with unique features like inline loops.\n- The 'WORKING-STORAGE SECTION' in COBOL is conceptually similar to declaring global variables in a TypeScript module.\n\nCOBOL's verbose, English-like syntax was revolutionary, making programs readable by non-technical business users. This readability comes at the cost of verbosity compared to modern languages like TypeScript. For example, a simple assignment in COBOL uses the 'MOVE' verb:\n\nMOVE 5 TO MY-VARIABLE.\n\nThis verbosity, while unfamiliar to modern developers, contributes to COBOL's self-documenting nature.\n\nDespite being over 60 years old, COBOL remains crucial in industries like banking and government, powering systems that process millions of daily transactions. Its continued use stems from its reliability, precision in decimal arithmetic (crucial for financial calculations), and the massive existing codebase.\n\nThis repository serves dual purposes: preserving computing history and providing resources for those still actively working with COBOL. It's a testament to COBOL's enduring legacy and ongoing relevance in specific sectors of the software industry.",
+      "title": "",
+      "id": "669"
+    },
+    {
+      "type": "textOnly",
+      "description": "In conclusion, The COBOL Program Collection is a valuable resource that preserves a wide range of COBOL programs and utilities. From simple 'Hello World' examples to complex games and business applications, this repository showcases the versatility and enduring relevance of COBOL. By maintaining this archive, the contributors are not only preserving computing history but also providing a resource for those who still work with COBOL in modern business environments. Whether you're a seasoned COBOL developer or a curious programmer interested in the history of computing, this repository offers a fascinating glimpse into the world of COBOL programming.",
+      "title": "",
+      "id": "670"
+    }
+  ]
+}
